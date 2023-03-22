@@ -1,0 +1,31 @@
+#!/bin/bash
+
+printf """
+----
+
+
+Polkit creation Script
+
+This script creates Policiy kit entries
+to allow a user in the wheel group (sudoers) to
+execute certain commands without a password prompt.
+
+Use this tool only if you are aware of the consequences.
+
+-----
+"""
+
+read -p "How should your rule be called? " rulename
+read -p "What program name do you want to execute without a password prompt? " progname
+
+printf """polkit.addRule(function(action, subject) {
+  if (action.id == "$progname" && subject.local && subject.active && subject.isInGroup("wheel")) {
+      return polkit.Result.YES;
+  }
+}); | sudo tee /etc/polkit-1/rules.d/$rulename.rules && printf """
+
+Success!
+
+Rule created.
+
+"""
