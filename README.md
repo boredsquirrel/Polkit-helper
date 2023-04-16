@@ -1,5 +1,7 @@
-# Polkit-helper
+# Polkit-helper BROKEN
 A small script creating PolKit rules, allowing wheel users to execute tasks like mounting LUKS drives, starting virt-manager and anything you like.
+
+Warning: there is some error in the script so it breaks a lot of things. I have to find the mistake, until then its pretty dangerous.
 
 ## Use case:
 
