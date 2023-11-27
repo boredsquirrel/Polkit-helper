@@ -36,4 +36,11 @@ Unlocking and mounting LUKS drives:
 
 Using virt-manager:
 
-- org.libvirt.unix.manage
+- ~~org.libvirt.unix.manage~~
+
+This is done by adding the user to the group `libvirt` !
+
+```
+sudo groupadd libvirt
+sudo usermod -aG libvirt $USER
+```
